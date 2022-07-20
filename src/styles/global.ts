@@ -40,4 +40,8 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  #__next {
+    width: 100%;
+  }
 `;
