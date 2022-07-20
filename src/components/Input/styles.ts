@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
+  width: 95%;
+
 `;
 
 export const InputContainer = styled.div`
@@ -9,7 +12,6 @@ export const InputContainer = styled.div`
   padding: 20px 0 0;
   margin-top: 10px;
   width: 100%;
-  max-width: 180px;
 
   > input {
     font-family: inherit;
@@ -58,7 +60,22 @@ export const InputContainer = styled.div`
     display: block;
     transition: 0.2s;
     font-size: 17px;
-    color: #9b9b9b;
+    color: ${({theme}) => theme.textBlack};
     pointer-events: none;
   }
 `;
+
+
+export const Button = styled.button`
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  border: none;
+  background-color: transparent;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: ${({theme}) => theme.primary};
+  }
+`

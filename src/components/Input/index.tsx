@@ -1,13 +1,11 @@
 import { InputHTMLAttributes, useState } from 'react';
-import { IconType } from 'react-icons';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import Button from '../Button';
-import { Container, InputContainer} from './styles';
+import { Container, InputContainer, Button } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   icon?: boolean;
-  type: string;
+  type?: string;
 }
 
 const Input = ({ label, icon, type, ...rest }: InputProps) => {
@@ -25,14 +23,10 @@ const Input = ({ label, icon, type, ...rest }: InputProps) => {
             {...rest}
           />
           <label>{label}</label>
+          <Button type="button" onClick={handleClick}>
+            {showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}
+          </Button>
         </InputContainer>
-        <Button
-          width="30px"
-          heigth="30px"
-          background="transparent"
-          onClick={handleClick}
-          icon={showPassword ? AiOutlineEyeInvisible : AiOutlineEye }
-        />
       </Container>
     );
   } else {
