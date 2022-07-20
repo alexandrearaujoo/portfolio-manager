@@ -3,7 +3,7 @@ import { IconType } from 'react-icons';
 import { ButtonStyled } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
+  children?: ReactNode;
   icon?: IconType;
   width?: string;
   heigth?: string;
