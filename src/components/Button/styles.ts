@@ -7,49 +7,35 @@ interface ButtonProps {
 }
 
 export const ButtonStyled = styled.button<ButtonProps>`
-  font-family: inherit;
-  display: inline-block;
-  width: ${props => props.width};
-  height: ${props => props.heigth};
-  line-height: 2.5em;
-  margin: 20px;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid ${({ theme }) => theme.primary};
-  transition: color 0.5s;
-  z-index: 1;
-  font-size: 17px;
-  border-radius: 6px;
+  width: ${({ width }) => width};
+  height: ${({ heigth }) => heigth};
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
   font-weight: 500;
-  color: ${({ theme }) => theme.primary};
-
-  :before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    background: ${props => props.background};
-    height: 150px;
-    width: 200px;
-    border-radius: 50%;
-  }
+  color: ${({ theme }) => theme.textBlack};
+  background-color: ${({ theme }) => theme.textWhite};
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
 
   :hover {
-    color: ${({ theme }) => theme.textWhite};
+    background-color: ${({ theme }) => theme.primary500};
+    box-shadow: 0px 15px 20px ${({ theme }) => theme.primary500};
+    color: #fff;
+    transform: translateY(-7px);
+
+    @media screen and (min-width: 1024px) {
+      background-color: ${({ theme }) => theme.primary};
+      box-shadow: 0px 15px 20px ${({ theme }) => theme.primary};
+    }
   }
 
-  :before {
-    top: 100%;
-    left: 100%;
-    transition: all 0.7s;
-  }
-  :hover:before {
-    top: -30px;
-    left: -30px;
-  }
-
-  :active:before {
-    background: ${({ theme }) =>
-      theme.primary ? theme.primary500 : theme.primary};
-    transition: background 0s;
+  :active {
+    transform: translateY(-1px);
   }
 `;
