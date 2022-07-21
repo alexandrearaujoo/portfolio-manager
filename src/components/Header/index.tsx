@@ -10,7 +10,7 @@ const Header = ({setIsOpen}) => {
     <Container>
       <Nav>
         <Ul>
-          <li onClick={() => router.push('/projects')}>Meus Projetos</li>
+          <li onClick={() => router.push('/dashboard')}>Meus Projetos</li>
           <li onClick={() => router.push('/documentation')}>Documentação</li>
           <li onClick={() => router.push('/token')}>Token de acesso</li>
           <li onClick={() => router.push('/profile')}>Perfil</li>

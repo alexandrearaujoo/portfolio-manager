@@ -15,7 +15,7 @@ const MenuMobile = ({ isOpen, setIsOpen }) => {
       <IoClose size={45} onClick={() => setIsOpen(false)} />
       <nav>
         <Ul>
-          <li onClick={() => router.push('/projects')}>Meus Projetos</li>
+          <li onClick={() => router.push('/dashboard')}>Meus Projetos</li>
           <li onClick={() => router.push('/documentation')}>Documentação</li>
           <li onClick={() => router.push('/token')}>Token de acesso</li>
           <li onClick={() => router.push('/profile')}>Perfil</li>
