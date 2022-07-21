@@ -45,6 +45,20 @@ export const Form = styled.form`
   border: 1px solid rgba(255, 255, 255, 0.125);
   -webkit-animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+  p {
+    color: ${({ theme }) => theme.textWhite};
+
+    a {
+      color: #38caef;
+      transition: 0.5s;
+      
+      :hover {
+        color: ${({ theme }) => theme.primary};
+        border-bottom: 1px solid ${({ theme }) => theme.primary};
+      }
+    }
+  }
 `;
 
 export const H2 = styled.h2`
@@ -77,7 +91,7 @@ export const Button = styled.button`
     background: transparent;
     text-transform: uppercase;
     font-weight: 900;
-    color: ${({theme}) => theme.textWhite};
+    color: ${({ theme }) => theme.textWhite};
 
     :before {
       position: absolute;
@@ -109,14 +123,14 @@ export const Button = styled.button`
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
     :hover:before {
-      border-color: ${({theme}) => theme.textWhite};
+      border-color: ${({ theme }) => theme.textWhite};
       height: 100%;
       transform: translateX(0);
       transition: 0.3s transform linear, 0.3s height linear 0.3s;
     }
 
     :hover:after {
-      border-color: ${({theme}) => theme.textWhite};
+      border-color: ${({ theme }) => theme.textWhite};
       height: 100%;
       transform: translateX(0);
       transition: 0.3s transform linear, 0.3s height linear 0.5s;

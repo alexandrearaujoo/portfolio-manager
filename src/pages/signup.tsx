@@ -1,6 +1,13 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Input from '../components/Input';
-import { Container, Form, H2, Button, TechsContainer } from '../styles/pages/Signup';
+import {
+  Container,
+  Form,
+  H2,
+  Button,
+  TechsContainer
+} from '../styles/pages/Signup';
 
 const SignUp = () => {
   return (
@@ -18,9 +25,15 @@ const SignUp = () => {
             <textarea />
             <label>Tecnologys</label>
           </TechsContainer>
-          <Button type='submit'>
+          <Button type="submit">
             <span>Cadastrar</span>
           </Button>
+          <p>
+            Já possui conta ?{' '}
+            <Link href="/login">
+              <a>Logar</a>
+            </Link>
+          </p>
         </Form>
       </Container>
     </>

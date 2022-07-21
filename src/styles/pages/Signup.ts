@@ -45,6 +45,20 @@ export const Form = styled.form`
   border: 1px solid rgba(255, 255, 255, 0.125);
   -webkit-animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+  p {
+    color: ${({ theme }) => theme.textWhite};
+
+    a {
+      color: #38caef;
+      transition: 0.5s;
+
+      :hover {
+        color: ${({ theme }) => theme.primary};
+        border-bottom: 1px solid ${({ theme }) => theme.primary};
+      }
+    }
+  }
 `;
 
 export const H2 = styled.h2`
@@ -129,7 +143,6 @@ export const TechsContainer = styled.div`
   padding: 20px 0 0;
   margin-top: 10px;
   width: 95%;
-
 
   > textarea {
     resize: none;
