@@ -20,7 +20,7 @@ export const InputContainer = styled.div`
     border-bottom: 2px solid #9b9b9b;
     outline: 0;
     font-size: 17px;
-    color: ${({theme}) => theme.textBlack};
+    color: ${({theme}) => theme.textWhite};
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
@@ -60,7 +60,7 @@ export const InputContainer = styled.div`
     display: block;
     transition: 0.2s;
     font-size: 17px;
-    color: ${({theme}) => theme.textBlack};
+    color: ${({theme}) => theme.textWhite};
     pointer-events: none;
   }
 `;
@@ -73,9 +73,10 @@ export const Button = styled.button`
   border: none;
   background-color: transparent;
 
+
   svg {
     width: 20px;
     height: 20px;
-    color: ${({theme}) => theme.primary};
+    color: ${({theme}) => theme.textWhite};
   }
 `

@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import Button from '../components/Button';
 import Input from '../components/Input';
-import { Container, Form, H2} from '../styles/pages/Login';
+import { Container, Form, H2, Button} from '../styles/pages/Login';
 
 const Login = () => {
   return (
@@ -11,11 +10,13 @@ const Login = () => {
     </Head>
     <Container>
       <Form>
+        <H2>Login</H2>
         <Input label="Email" type="text" />
         <Input label="Password" icon />
-        <Button width='150px' heigth='45px'>Logar</Button>
+        <Button>
+          <span>Logar</span>
+        </Button>
       </Form>
-        <H2>Login</H2>
     </Container>
     </>
   );
