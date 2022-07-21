@@ -1,4 +1,5 @@
 import { FiMoreVertical } from 'react-icons/fi';
+import Background from '../../assets/background.jpg';
 import {
   Container,
   Button,
@@ -12,7 +13,7 @@ import {
 const CardProject = () => {
   return (
     <Container>
-      <CardImage></CardImage>
+      <CardImage src={Background} alt='Teste'/>
       <CardInfo>
         <Title>Product title </Title>
         <Desctiption>Product description and details</Desctiption>

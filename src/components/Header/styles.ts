@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   width: 100%;
-  height: 3rem;
+  height: 3.5rem;
   display: flex;
   justify-content: flex-end;
+  background-color: red;
 `;
 
 export const Nav = styled.nav`
@@ -30,9 +31,15 @@ export const Ul = styled.ul`
     align-items: center;
     justify-content: space-around;
 
+
     li {
       margin-right: 1rem;
       cursor: pointer;
+      transition: 0.5s;
+
+      :hover {
+        border-bottom: 1px solid #000;
+      }
     }
 
     li + li {

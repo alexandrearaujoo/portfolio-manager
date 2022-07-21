@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Background from '../../assets/background.jpg';
+
+
 
 export const Container = styled.section`
   width: 95%;
@@ -14,21 +15,18 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  transition: 0.5s;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
-export const CardImage = styled.div`
-  background: url(${Background}) no-repeat center;
-  background-size: cover;
+export const CardImage = styled.img`
   height: 40%;
   width: 100%;
   border-radius: 0.5rem;
   transition: 0.3s ease;
-
-  :hover {
-    transform: translateY(-25%);
-    box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px,
-      rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
-  }
 `;
 
 export const CardInfo = styled.div`

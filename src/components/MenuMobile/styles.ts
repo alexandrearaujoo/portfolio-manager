@@ -67,5 +67,10 @@ export const Ul = styled.ul`
 
   li {
     cursor: pointer;
+    transition: 0.5s;
+
+      :hover {
+        border-bottom: 1px solid #000;
+      }
   }
 `;
