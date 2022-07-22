@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-  width: 500px;
-  height: 254px;
+  width: 95%;
+  max-width: 500px;
+  height: 450px;
   margin: 0 auto;
   background-color: #011522;
   border-radius: 8px;
@@ -36,3 +37,16 @@ export const Yellow = styled(Box)`
 export const Green = styled(Box)`
   background-color: #00ca4e;
 `;
+
+
+export const H4 = styled.h4`
+  color: ${({theme}) => theme.textWhite};
+  text-align: center;
+
+`
+export const DivImg = styled.div`
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  justify-content: space-between;
+`

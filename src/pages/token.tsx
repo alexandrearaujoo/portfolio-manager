@@ -1,27 +1,27 @@
 import Head from 'next/head';
-import { useState } from 'react';
-import CardProject from '../components/CardProjects';
+import { Main } from '../styles/pages/Token';
+import CardCode from '../components/CardCode';
 import Header from '../components/Header';
 import MenuMobile from '../components/MenuMobile';
-import { Main } from '../styles/pages/Dashboard';
+import { useState } from 'react';
 
-const Dashboard = () => {
+const Token = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   return (
     <>
       <Head>
-        <title>Projetos</title>
+        <title>Token de Acesso</title>
       </Head>
       <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header setIsOpen={setIsOpen} />
       <Main>
-        {[1, 2, 3, 4, 5, 6].map(item => (
-          <CardProject key={item} />
-        ))}
+        <h3>Seu token de acesso</h3>
+
+        <h4>hsuhsushuushushuhushushushusuhusushus</h4>
+        <CardCode />
       </Main>
     </>
   );
 };
 
-export default Dashboard;
+export default Token;
