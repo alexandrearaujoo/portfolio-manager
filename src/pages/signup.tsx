@@ -5,8 +5,7 @@ import {
   Container,
   Form,
   H2,
-  Button,
-  TechsContainer
+  Button
 } from '../styles/pages/Signup';
 
 const SignUp = () => {
@@ -21,10 +20,6 @@ const SignUp = () => {
           <Input label="Name" type="text" />
           <Input label="Email" type="text" />
           <Input label="Password" icon />
-          <TechsContainer>
-            <textarea />
-            <label>Tecnologys</label>
-          </TechsContainer>
           <Button type="submit">
             <span>Cadastrar</span>
           </Button>
