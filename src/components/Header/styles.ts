@@ -31,6 +31,20 @@ export const Ul = styled.ul`
     align-items: center;
     justify-content: space-around;
 
+    a {
+      margin-right: 1rem;
+      cursor: pointer;
+      transition: 0.5s;
+      color: #000;
+
+      :hover {
+        border-bottom: 1px solid #000;
+      }
+    }
+
+    a + a {
+      margin-right: 1rem;
+    }
 
     li {
       margin-right: 1rem;

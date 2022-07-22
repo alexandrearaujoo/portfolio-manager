@@ -50,7 +50,7 @@ export const Container = styled.div<MenuProps>`
         transform: scale(1);
       }
 
-      @media screen and (min-width: 768px){
+      @media screen and (min-width: 768px) {
         display: none;
       }
     `}
@@ -65,12 +65,23 @@ export const Ul = styled.ul`
   transition: 0.7s;
   transform: scale(0.7);
 
+  a {
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #000;
+
+    :hover {
+      border-bottom: 1px solid #000;
+    }
+  }
+
   li {
     cursor: pointer;
     transition: 0.5s;
 
-      :hover {
-        border-bottom: 1px solid #000;
-      }
+    :hover {
+      border-bottom: 1px solid #000;
+    }
   }
 `;

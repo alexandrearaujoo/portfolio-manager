@@ -2,6 +2,7 @@ import { Container, Ul } from './styles';
 import { IoClose } from 'react-icons/io5';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const MenuMobile = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
@@ -16,7 +17,9 @@ const MenuMobile = ({ isOpen, setIsOpen }) => {
       <nav>
         <Ul>
           <li onClick={() => router.push('/dashboard')}>Meus Projetos</li>
-          <li onClick={() => router.push('/documentation')}>Documentação</li>
+          <Link href="https://manager-portfolio-api.herokuapp.com/api/docs/">
+            <a target="blank">Documentação</a>
+          </Link>
           <li onClick={() => router.push('/token')}>Token de acesso</li>
           <li onClick={() => router.push('/profile')}>Perfil</li>
         </Ul>
