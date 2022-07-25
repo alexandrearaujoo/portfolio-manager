@@ -5,6 +5,7 @@ import { Container, Form, H2, Button } from '../styles/pages/Login';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../schemas';
+import { useUser } from '../providers/User';
 
 interface LoginProps {
   email: string;
@@ -12,6 +13,8 @@ interface LoginProps {
 }
 
 const Login = () => {
+  const {login} = useUser()
+
   const {
     register,
     handleSubmit,
@@ -20,8 +23,8 @@ const Login = () => {
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = (data: LoginProps) => {
-    console.log(data);
+  const onSubmit = async (data: LoginProps) => {
+    await login(data)
   };
 
   return (

@@ -4,9 +4,16 @@ import CardCode from '../components/CardCode';
 import Header from '../components/Header';
 import MenuMobile from '../components/MenuMobile';
 import { useState } from 'react';
+import { useUser } from '../providers/User';
+import Loading from '../components/Loading';
 
 const Token = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const {user} = useUser()
+
+  if (!user) return <Loading />
+
   return (
     <>
       <Head>
@@ -17,7 +24,7 @@ const Token = () => {
       <Main>
         <h3>Seu token de acesso</h3>
 
-        <h4>hsuhsushuushushuhushushushusuhusushus</h4>
+        <h4>{user.token}</h4>
         <CardCode />
       </Main>
     </>

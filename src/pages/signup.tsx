@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Input } from '../components/Input';
+import { useUser } from '../providers/User';
 import { signUpSchema } from '../schemas';
 import { Container, Form, H2, Button } from '../styles/pages/Signup';
 
@@ -13,6 +14,8 @@ interface SignUpProps {
 }
 
 const SignUp = () => {
+  const {signUp} = useUser()
+
   const {
     register,
     handleSubmit,
@@ -21,8 +24,8 @@ const SignUp = () => {
     resolver: yupResolver(signUpSchema)
   });
 
-  const onSubmit = (data: SignUpProps) => {
-    console.log(data)
+  const onSubmit = async (data: SignUpProps) => {
+    await signUp(data)
   }
 
   return (
