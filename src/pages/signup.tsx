@@ -1,25 +1,41 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import Head from 'next/head';
 import Link from 'next/link';
-import Input from '../components/Input';
-import {
-  Container,
-  Form,
-  H2,
-  Button
-} from '../styles/pages/Signup';
+import { useForm } from 'react-hook-form';
+import { Input } from '../components/Input';
+import { signUpSchema } from '../schemas';
+import { Container, Form, H2, Button } from '../styles/pages/Signup';
+
+interface SignUpProps {
+  name: string
+  email: string
+  password: string
+}
 
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(signUpSchema)
+  });
+
+  const onSubmit = (data: SignUpProps) => {
+    console.log(data)
+  }
+
   return (
     <>
       <Head>
-        <title>Portfolio Manager | SignUp</title>
+        <title>SignUp</title>
       </Head>
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <H2>Cadastro</H2>
-          <Input label="Name" type="text" />
-          <Input label="Email" type="text" />
-          <Input label="Password" icon />
+          <Input label="Name" type="text" {...register('name')} error={errors.name?.message} />
+          <Input label="Email" type="text" {...register('email')} error={errors.email?.message} />
+          <Input label="Password" icon {...register('password')} error={errors.password?.message} />
           <Button type="submit">
             <span>Cadastrar</span>
           </Button>
