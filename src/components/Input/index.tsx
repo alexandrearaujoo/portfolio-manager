@@ -1,4 +1,9 @@
-import { InputHTMLAttributes, useState } from 'react';
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  InputHTMLAttributes,
+  useState
+} from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Container, InputContainer, Button } from './styles';
 
@@ -6,9 +11,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   icon?: boolean;
   type?: string;
+  error?: any;
 }
 
-const Input = ({ label, icon, type, ...rest }: InputProps) => {
+const InputDefault: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({
+  label,
+  icon,
+  type,
+  error,
+  ...rest
+}, ref) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClick = () => setShowPassword(!showPassword);
@@ -20,11 +32,14 @@ const Input = ({ label, icon, type, ...rest }: InputProps) => {
           <input
             placeholder={label}
             type={showPassword ? 'text' : 'password'}
+            ref={ref}
             {...rest}
           />
-          <label>{label}</label>
+          <label>
+            {label} {!!error && <span> - {error}</span>}
+          </label>
           <Button type="button" onClick={handleClick}>
-            {showPassword ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}
+            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </Button>
         </InputContainer>
       </Container>
@@ -33,12 +48,19 @@ const Input = ({ label, icon, type, ...rest }: InputProps) => {
     return (
       <Container>
         <InputContainer>
-          <input placeholder={label} type={type} {...rest} />
-          <label>{label}</label>
+          <input
+            placeholder={label}
+            type={type}
+            ref={ref}
+            {...rest}
+          />
+          <label>
+            {label} {!!error && <span> - {error}</span>}
+          </label>
         </InputContainer>
       </Container>
     );
   }
 };
 
-export default Input;
+export const Input = forwardRef(InputDefault);

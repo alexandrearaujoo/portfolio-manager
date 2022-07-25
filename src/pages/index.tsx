@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Logo from '../assets/Manager-Portfolio-Logotipo.gif'
 import Button from '../components/Button';
 import { Main, Div, Section } from '../styles/pages/Home';
 
@@ -14,7 +13,7 @@ export default function Home() {
       </Head>
       <Main>
         <Div>
-          <img src={Logo} alt="Logo" />
+          <img src="#" alt="Logo" />
           <p>Registre seus projetos de forma rapida e eficaz!</p>
         </Div>
         <Section>
