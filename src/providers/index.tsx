@@ -1,17 +1,17 @@
-import { ReactNode } from "react"
-import { UserProvider } from "./User"
+import { ReactNode } from 'react';
+import { ProjectProvider } from './Projects';
+import { UserProvider } from './User';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
-const Provider = ({children}: Props) => {
+const Provider = ({ children }: Props) => {
   return (
     <UserProvider>
-    {children}
+      <ProjectProvider>{children}</ProjectProvider>
     </UserProvider>
-  )
-}
+  );
+};
 
-export default Provider
-
+export default Provider;
