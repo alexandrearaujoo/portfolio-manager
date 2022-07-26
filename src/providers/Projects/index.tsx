@@ -7,8 +7,8 @@ import {
 } from 'react';
 import api from '../../services/api';
 import toast from 'react-hot-toast';
-import router from 'next/router';
 import { useUser } from '../User';
+import Loading from '../../components/Loading';
 
 interface Props {
   children: ReactNode;
@@ -20,7 +20,18 @@ interface ProjectProps {
   slug?: string;
   description?: string;
   link_website: string;
-  link_github: string;
+  link_repository: string;
+  img: any;
+}
+
+interface GetProjectProps {
+  id: string;
+  title: string;
+  type?: string;
+  slug?: string;
+  description?: string;
+  link_website: string;
+  link_repository: string;
   img: any;
 }
 
@@ -30,11 +41,11 @@ interface EditProjectProps {
   slug?: string;
   description?: string;
   link_website?: string;
-  link_github?: string;
+  link_repository?: string;
 }
 
 interface ProjectContextData {
-  projects: ProjectProps[];
+  projects: GetProjectProps[];
   createProject: (data: ProjectProps) => Promise<void>;
   getProjects: () => Promise<void>;
   editProject: (data: EditProjectProps, id: string) => Promise<void>;
@@ -47,7 +58,9 @@ const ProjectContext = createContext<ProjectContextData>(
 
 export const ProjectProvider = ({ children }: Props) => {
   const { user } = useUser();
-  const [projects, setProjects] = useState<ProjectProps[]>([]);
+  const [projects, setProjects] = useState<GetProjectProps[]>([]);
+
+  if (!user) return <Loading />;
 
   const createProject = async (data: ProjectProps) => {
     await api
@@ -57,7 +70,10 @@ export const ProjectProvider = ({ children }: Props) => {
           Authorization: `Token ${user.token}`
         }
       })
-      .then(_ => toast.success('Registered project'))
+      .then(res => {
+        getProjects();
+        toast.success('Registered project');
+      })
       .catch(err => console.log(err));
   };
 

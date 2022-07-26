@@ -5,6 +5,7 @@ import { projectSchema } from '../../schemas';
 import { Input } from '../Input';
 import { Container, Form, Button, CloseButton } from './styles';
 import { IoClose } from 'react-icons/io5';
+import { useProject } from '../../providers/Projects';
 
 interface ProjectProps {
   title: string;
@@ -12,11 +13,13 @@ interface ProjectProps {
   slug?: string;
   description?: string;
   link_website: string;
-  link_github: string;
+  link_repository: string;
   img: any;
 }
 
-const RegisterProject = ({ openRegister, handleClick }) => {
+const RegisterProject = ({ openRegister, setOpenRegister, handleClick }) => {
+  const { createProject } = useProject();
+
   const {
     register,
     handleSubmit,
@@ -26,7 +29,9 @@ const RegisterProject = ({ openRegister, handleClick }) => {
   });
 
   const onSubmit = async (data: ProjectProps) => {
-    console.log(data);
+    data.img = data.img[0];
+    await createProject(data);
+    setOpenRegister(false);
   };
 
   useEffect(() => {
@@ -36,7 +41,7 @@ const RegisterProject = ({ openRegister, handleClick }) => {
   return (
     <Container>
       <CloseButton onClick={handleClick}>
-        <IoClose size={25}/>
+        <IoClose size={25} />
       </CloseButton>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
@@ -57,8 +62,8 @@ const RegisterProject = ({ openRegister, handleClick }) => {
         <Input
           label="Link GitHub *"
           type="text"
-          {...register('link_github')}
-          error={errors.link_github?.message}
+          {...register('link_repository')}
+          error={errors.link_repository?.message}
         />
         <Input label="Thumbnail" type="file" {...register('img')} />
         <Button type="submit">

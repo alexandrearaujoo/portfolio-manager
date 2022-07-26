@@ -17,7 +17,7 @@ export const projectSchema = yup.object().shape({
   slug: yup.string(),
   description: yup.string(),
   link_website: yup.string().required('Required field'),
-  link_github: yup.string().required('Required field'),
+  link_repository: yup.string().required('Required field'),
   img: yup.mixed()
 })
 
@@ -27,6 +27,6 @@ export const updateProjectSchema = yup.object().shape({
   slug: yup.string(),
   description: yup.string(),
   link_website: yup.string(),
-  link_github: yup.string(),
+  link_repository: yup.string(),
   img: yup.mixed()
 })

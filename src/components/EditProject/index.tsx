@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoClose } from 'react-icons/io5';
+import { useProject } from '../../providers/Projects';
 import { updateProjectSchema } from '../../schemas';
 import { Input } from '../Input';
 import { CloseButton, Container, Form, Button } from './styles';
@@ -15,7 +16,9 @@ interface EditProjectProps {
   link_github?: string;
 }
 
-const EditProject = ({ isOpen, handleClick }) => {
+const EditProject = ({ isOpen, handleClick, setIsOpen, project }) => {
+  const { editProject, deleteProject } = useProject();
+
   const {
     register,
     handleSubmit,
@@ -25,7 +28,8 @@ const EditProject = ({ isOpen, handleClick }) => {
   });
 
   const onSubmit = async (data: EditProjectProps) => {
-    console.log(data);
+    await editProject(data, project.id);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -41,44 +45,50 @@ const EditProject = ({ isOpen, handleClick }) => {
         <Input
           label="Title"
           type="text"
-          defaultValue={'teste'}
+          defaultValue={project.title}
           {...register('title')}
           error={errors.title?.message}
         />
         <Input
           label="Type"
           type="text"
-          defaultValue={'teste'}
+          defaultValue={project.type}
           {...register('type')}
         />
         <Input
           label="Slug"
           type="text"
-          defaultValue={'teste'}
+          defaultValue={project.slug}
           {...register('slug')}
         />
         <Input
           label="Description"
           type="text"
-          defaultValue={'teste'}
+          defaultValue={project.description}
           {...register('description')}
         />
         <Input
           label="Link Website"
           type="text"
-          defaultValue={'teste'}
+          defaultValue={project.link_website}
           {...register('link_website')}
           error={errors.link_website?.message}
         />
         <Input
-          label="Link GitHub"
+          label="Link Repository"
           type="text"
-          defaultValue={'teste'}
-          {...register('link_github')}
-          error={errors.link_github?.message}
+          defaultValue={project.link_repository}
+          {...register('link_repository')}
+          error={errors.link_repository?.message}
         />
         <Button type="submit">
-          <span>Registrar</span>
+          <span>Editar</span>
+        </Button>
+        <Button
+          type="button"
+          onClick={async () => await deleteProject(project.id)}
+        >
+          <span>Deletar</span>
         </Button>
       </Form>
     </Container>
