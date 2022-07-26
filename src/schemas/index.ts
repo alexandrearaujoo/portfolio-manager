@@ -20,3 +20,13 @@ export const projectSchema = yup.object().shape({
   link_github: yup.string().required('Required field'),
   img: yup.mixed()
 })
+
+export const updateProjectSchema = yup.object().shape({
+  title: yup.string(),
+  type: yup.string(),
+  slug: yup.string(),
+  description: yup.string(),
+  link_website: yup.string(),
+  link_github: yup.string(),
+  img: yup.mixed()
+})

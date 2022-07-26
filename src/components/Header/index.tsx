@@ -15,7 +15,6 @@ const Header = ({ setIsOpen }) => {
             <a target="blank">Documentação</a>
           </Link>
           <li onClick={() => router.push('/token')}>Token de acesso</li>
-          <li onClick={() => router.push('/profile')}>Perfil</li>
         </Ul>
         <IoMenu size={45} onClick={() => setIsOpen(true)} />
       </Nav>

@@ -1,8 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-interface ButtonProps {
-  openRegister: boolean;
-}
 
 export const Main = styled.main`
   display: flex;
@@ -25,7 +22,7 @@ export const H1 = styled.h1`
   margin: 15px 0 15px 0;
 `;
 
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,10 +66,4 @@ export const Button = styled.button<ButtonProps>`
   :hover span {
     visibility: visible;
   }
-
-  ${({ openRegister }) =>
-    openRegister &&
-    css`
-      display: none;
-    `}
 `;

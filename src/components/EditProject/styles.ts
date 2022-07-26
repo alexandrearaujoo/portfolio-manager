@@ -16,8 +16,8 @@ const scaleInCenter = keyframes`
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-  top: 0;
   position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,3 +121,4 @@ export const CloseButton = styled.button`
     color: ${({ theme }) => theme.textWhite};
   }
 `;
+

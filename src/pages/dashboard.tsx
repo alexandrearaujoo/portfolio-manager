@@ -22,7 +22,7 @@ const Dashboard = () => {
       </Head>
       <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header setIsOpen={setIsOpen} />
-      <Button onClick={handleClick} openRegister={openRegister}>
+      <Button onClick={handleClick}>
         <BiBookAdd size={20}/>
         <span>Registrar um projeto</span>
       </Button>
