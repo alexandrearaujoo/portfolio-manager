@@ -5,7 +5,8 @@ export const Container = styled.header`
   height: 3.5rem;
   display: flex;
   justify-content: flex-end;
-  background-color: red;
+  box-shadow: 0px 5px 8px -7px rgba(0, 0, 0, 0.72);
+  border-bottom: 1px solid ${({ theme }) => theme.textWhite};
 `;
 
 export const Nav = styled.nav`
@@ -19,6 +20,7 @@ export const Nav = styled.nav`
     svg {
       display: flex;
       cursor: pointer;
+      color: ${({ theme }) => theme.textWhite};
     }
   }
 `;
@@ -35,10 +37,11 @@ export const Ul = styled.ul`
       margin-right: 1rem;
       cursor: pointer;
       transition: 0.5s;
-      color: #000;
+      color: ${({ theme }) => theme.textWhite};
+      border-bottom: 1px solid transparent;
 
       :hover {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid ${({ theme }) => theme.textWhite};
       }
     }
 
@@ -49,10 +52,12 @@ export const Ul = styled.ul`
     li {
       margin-right: 1rem;
       cursor: pointer;
+      border-bottom: 1px solid transparent;
       transition: 0.5s;
+      color: ${({ theme }) => theme.textWhite};
 
       :hover {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid ${({ theme }) => theme.textWhite};
       }
     }
 

@@ -1,16 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 import Background from '../../assets/background.webp'
 
-const focus = keyframes`
+const scaleInCenter = keyframes`
  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(300px);
-            transform: translateZ(300px);
-    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
   }
   100% {
-    -webkit-transform: translateZ(12px);
-            transform: translateZ(12px);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     opacity: 1;
   }
 `;
@@ -43,14 +42,15 @@ export const Form = styled.form`
   background-color: rgba(17, 25, 40, 0.75);
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.125);
-  -webkit-animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: ${scaleInCenter} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: ${scaleInCenter} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   p {
     color: ${({ theme }) => theme.textWhite};
 
     a {
       color: #38caef;
+      border-bottom: 1px solid transparent;
       transition: 0.5s;
 
       :hover {
@@ -65,7 +65,7 @@ export const H2 = styled.h2`
   color: ${({ theme }) => theme.textWhite};
   font-weight: bold;
   letter-spacing: 3px;
-  -webkit-animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: ${focus} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: ${scaleInCenter} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: ${scaleInCenter} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 

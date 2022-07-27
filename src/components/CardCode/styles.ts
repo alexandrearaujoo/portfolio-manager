@@ -5,9 +5,15 @@ export const Card = styled.div`
   max-width: 500px;
   height: 240px;
   margin: 1rem;
-  background-color: #011522;
+  background: linear-gradient(225deg, rgb(49, 56, 96) 0%, rgb(17, 23, 43) 100%);
   border-radius: 8px;
   z-index: 1;
+  transition: 0.5s;
+  box-shadow: 0px 5px 8px -1px rgba(0, 0, 0, 0.72);
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 export const Tools = styled.div`
   display: flex;

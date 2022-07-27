@@ -20,7 +20,7 @@ export default createGlobalStyle`
   }
   body {
     line-height: 1;
-    background-color: #f3f3f3;
+    background-color: #11172B;
     font-family: 'Roboto', sans-serif;
     position: relative;
     height: 100vh;

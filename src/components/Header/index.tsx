@@ -6,6 +6,8 @@ import Link from 'next/link';
 const Header = ({ setIsOpen }) => {
   const router = useRouter();
 
+  
+
   return (
     <Container>
       <Nav>

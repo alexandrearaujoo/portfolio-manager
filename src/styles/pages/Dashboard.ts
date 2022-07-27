@@ -39,10 +39,14 @@ export const Button = styled.button`
   position: relative;
   display: inline-block;
 
+  > svg {
+    color: ${({ theme }) => theme.textWhite};
+  }
+
   > span {
     visibility: hidden;
     width: 10rem;
-    color: ${({ theme }) => theme.textBlack};
+    color: ${({ theme }) => theme.textWhite};
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
@@ -59,7 +63,7 @@ export const Button = styled.button`
       margin-top: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: transparent ${({ theme }) => theme.textBlack} transparent
+      border-color: transparent ${({ theme }) => theme.textWhite} transparent
         transparent;
     }
   }

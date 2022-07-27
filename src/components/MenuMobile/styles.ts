@@ -12,9 +12,7 @@ export const Container = styled.div<MenuProps>`
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
-
-  background: #007077;
-  background: linear-gradient(to top left, #007077 64%, #0b949b 82%);
+  background: linear-gradient(225deg, rgb(49, 56, 96) 0%, rgb(17, 23, 43) 100%);
   opacity: 0;
   pointer-events: none;
 
@@ -28,6 +26,7 @@ export const Container = styled.div<MenuProps>`
     transform: rotate(45deg);
     transition: 0.7s;
     cursor: pointer;
+    color: ${({theme}) => theme.textWhite};
   }
 
   ${({ isOpen }) =>
@@ -69,19 +68,20 @@ export const Ul = styled.ul`
     margin-right: 1rem;
     cursor: pointer;
     transition: 0.5s;
-    color: #000;
-
+    color: ${({theme}) => theme.textWhite};
+    border-bottom: 1px solid transparent;
     :hover {
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid ${({theme}) => theme.textWhite};
     }
   }
 
   li {
     cursor: pointer;
     transition: 0.5s;
-
+    color: ${({theme}) => theme.textWhite};
+    border-bottom: 1px solid transparent;
     :hover {
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid ${({theme}) => theme.textWhite};
     }
   }
 `;

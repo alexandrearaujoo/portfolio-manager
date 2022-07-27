@@ -5,10 +5,10 @@ export const Container = styled.section`
   max-width: 250px;
   height: 400px;
   padding: 0.8em;
-  background: #f5f5f5;
+  background: linear-gradient(225deg, rgb(49, 56, 96) 0%, rgb(17, 23, 43) 100%);
   position: relative;
   overflow: visible;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   display: flex;
   flex-direction: column;
@@ -43,7 +43,6 @@ export const CardFooter = styled.div`
   border-top: 1px solid #ddd;
 `;
 
-
 export const Div = styled.div`
   display: flex;
   width: 100%;
@@ -54,16 +53,18 @@ export const Title = styled.p`
   font-weight: 900;
   font-size: 1.2em;
   line-height: 1.5;
+  color: ${({ theme }) => theme.textWhite};
 `;
 export const Desctiption = styled.p`
   font-size: 0.9em;
   padding-bottom: 10px;
+  color: ${({ theme }) => theme.textWhite};
 
   word-wrap: break-word;
 `;
 
 export const Button = styled.button`
-  border: 1px solid ${({ theme }) => theme.textBlack};
+  border: 1px solid ${({ theme }) => theme.textWhite};
   display: flex;
   padding: 0.3em;
   cursor: pointer;
