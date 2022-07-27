@@ -55,7 +55,7 @@ export const Span = styled.span`
   font-size: small;
   width: 100px;
   height: 100px;
-  color: ${({ theme }) => theme.textBlack};
+  color: ${({ theme }) => theme.textWhite};
   text-align: center;
   line-height: 100px;
   animation: ${a2} 2s linear infinite;

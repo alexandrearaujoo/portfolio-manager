@@ -1,4 +1,11 @@
-import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+  SetStateAction
+} from 'react';
 import api from '../../services/api';
 import toast from 'react-hot-toast';
 import router from 'next/router';
@@ -26,6 +33,7 @@ interface LoginUserProps {
 interface UserContextData {
   signUp: (data: CreateUserProps) => Promise<void>;
   login: (data: LoginUserProps) => Promise<void>;
+  logout: () => void;
   user: User;
 }
 
@@ -35,12 +43,12 @@ export const UserProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    const data = localStorage.getItem("UserData")
+    const data = localStorage.getItem('UserData');
 
     if (data) {
-      setUser(JSON.parse(data))
+      setUser(JSON.parse(data));
     }
-},[])
+  }, []);
 
   const signUp = async (data: CreateUserProps) => {
     await api
@@ -62,8 +70,13 @@ export const UserProvider = ({ children }: Props) => {
       .catch(err => toast.error(err.response.data.message));
   };
 
+  const logout = () => {
+    localStorage.clear();
+    router.push('/login');
+  };
+
   return (
-    <UserContext.Provider value={{ signUp, login, user }}>
+    <UserContext.Provider value={{ signUp, login, logout, user }}>
       {children}
     </UserContext.Provider>
   );

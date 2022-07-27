@@ -46,10 +46,10 @@ interface EditProjectProps {
 
 interface ProjectContextData {
   projects: GetProjectProps[];
-  createProject: (data: ProjectProps) => Promise<void>;
-  getProjects: () => Promise<void>;
-  editProject: (data: EditProjectProps, id: string) => Promise<void>;
-  deleteProject: (id: string) => Promise<void>;
+  createProject: (data: ProjectProps, token: string) => Promise<void>;
+  getProjects: (token: string) => Promise<void>;
+  editProject: (data: EditProjectProps, id: string, token: string) => Promise<void>;
+  deleteProject: (id: string, token: string) => Promise<void>;
 }
 
 const ProjectContext = createContext<ProjectContextData>(
@@ -57,55 +57,52 @@ const ProjectContext = createContext<ProjectContextData>(
 );
 
 export const ProjectProvider = ({ children }: Props) => {
-  const { user } = useUser();
   const [projects, setProjects] = useState<GetProjectProps[]>([]);
 
-  if (!user) return <Loading />;
-
-  const createProject = async (data: ProjectProps) => {
+  const createProject = async (data: ProjectProps, token: string) => {
     await api
       .post('projects/', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Token ${user.token}`
+          Authorization: `Token ${token}`
         }
       })
       .then(res => {
-        getProjects();
+        getProjects(token);
         toast.success('Registered project');
       })
       .catch(err => console.log(err));
   };
 
-  const getProjects = async () => {
+  const getProjects = async (token: string) => {
     const { data } = await api.get('projects/', {
       headers: {
-        Authorization: `Token ${user.token}`
+        Authorization: `Token ${token}`
       }
     });
 
     setProjects(data);
   };
 
-  const editProject = async (data: EditProjectProps, id: string) => {
+  const editProject = async (data: EditProjectProps, id: string, token: string) => {
     await api
       .patch(`projects/${id}`, data, {
         headers: {
-          Authorization: `Token ${user.token}`
+          Authorization: `Token ${token}`
         }
       })
-      .then(_ => getProjects() && toast.success('Updated Project'))
+      .then(_ => getProjects(token) && toast.success('Updated Project'))
       .catch(err => console.log(err));
   };
 
-  const deleteProject = async (id: string) => {
+  const deleteProject = async (id: string, token: string) => {
     await api
       .delete(`projects/${id}`, {
         headers: {
-          Authorization: `Token ${user.token}`
+          Authorization: `Token ${token}`
         }
       })
-      .then(_ => getProjects() && toast.success('Deleted Project'))
+      .then(_ => getProjects(token) && toast.success('Deleted Project'))
       .catch(err => console.log(err));
   };
 

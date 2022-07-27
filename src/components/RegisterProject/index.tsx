@@ -7,6 +7,8 @@ import { Container, Form, CloseButton } from './styles';
 import { IoClose } from 'react-icons/io5';
 import { useProject } from '../../providers/Projects';
 import Button from '../Button';
+import { useUser } from '../../providers/User';
+import Loading from '../Loading';
 
 interface ProjectProps {
   title: string;
@@ -20,6 +22,7 @@ interface ProjectProps {
 
 const RegisterProject = ({ openRegister, setOpenRegister, handleClick }) => {
   const { createProject } = useProject();
+  const { user } = useUser();
 
   const {
     register,
@@ -31,7 +34,7 @@ const RegisterProject = ({ openRegister, setOpenRegister, handleClick }) => {
 
   const onSubmit = async (data: ProjectProps) => {
     data.img = data.img[0];
-    await createProject(data);
+    await createProject(data, user.token);
     setOpenRegister(false);
   };
 
@@ -67,7 +70,9 @@ const RegisterProject = ({ openRegister, setOpenRegister, handleClick }) => {
           error={errors.link_repository?.message}
         />
         <Input label="Thumbnail" type="file" {...register('img')} />
-        <Button type="submit" color='#fff'>Registrar</Button>
+        <Button type="submit" color="#fff">
+          Registrar
+        </Button>
       </Form>
     </Container>
   );

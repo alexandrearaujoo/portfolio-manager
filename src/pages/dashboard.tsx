@@ -8,8 +8,11 @@ import { Main, Button, H1 } from '../styles/pages/Dashboard';
 import { BiBookAdd } from 'react-icons/bi';
 import { useProject } from '../providers/Projects';
 import Loading from '../components/Loading';
+import { useUser } from '../providers/User';
+
 
 const Dashboard = () => {
+  const { user } = useUser();
   const { projects, getProjects } = useProject();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [openRegister, setOpenRegister] = useState<boolean>(false);
@@ -19,8 +22,11 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getProjects();
-  }, []);
+    if(user) {
+      getProjects(user.token)
+    }
+  },[user])
+
 
   if (!projects) return <Loading />;
 

@@ -3,9 +3,12 @@ import { IoClose } from 'react-icons/io5';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useUser } from '../../providers/User';
 
 const MenuMobile = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
+
+  const { logout } = useUser();
 
   useEffect(() => {
     document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
@@ -21,6 +24,7 @@ const MenuMobile = ({ isOpen, setIsOpen }) => {
             <a target="blank">Documentação</a>
           </Link>
           <li onClick={() => router.push('/token')}>Token de acesso</li>
+          <li onClick={logout}>Logout</li>
         </Ul>
       </nav>
     </Container>

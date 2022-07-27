@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoClose } from 'react-icons/io5';
 import { useProject } from '../../providers/Projects';
+import { useUser } from '../../providers/User';
 import { updateProjectSchema } from '../../schemas';
 import Button from '../Button';
 import { Input } from '../Input';
@@ -19,6 +20,7 @@ interface EditProjectProps {
 
 const EditProject = ({ isOpen, handleClick, setIsOpen, project }) => {
   const { editProject, deleteProject } = useProject();
+  const { user } = useUser();
 
   const {
     register,
@@ -29,7 +31,7 @@ const EditProject = ({ isOpen, handleClick, setIsOpen, project }) => {
   });
 
   const onSubmit = async (data: EditProjectProps) => {
-    await editProject(data, project.id);
+    await editProject(data, project.id, user.token);
     setIsOpen(false);
   };
 
@@ -88,7 +90,7 @@ const EditProject = ({ isOpen, handleClick, setIsOpen, project }) => {
         <Button
           type="button"
           color="#fff"
-          onClick={async () => await deleteProject(project.id)}
+          onClick={async () => await deleteProject(project.id, user.token)}
         >
           Deletar
         </Button>
