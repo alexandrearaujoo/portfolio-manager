@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 import { IoClose } from 'react-icons/io5';
 import { useProject } from '../../providers/Projects';
 import { updateProjectSchema } from '../../schemas';
+import Button from '../Button';
 import { Input } from '../Input';
-import { CloseButton, Container, Form, Button } from './styles';
+import { CloseButton, Container, Form } from './styles';
 
 interface EditProjectProps {
   title?: string;
@@ -81,14 +82,15 @@ const EditProject = ({ isOpen, handleClick, setIsOpen, project }) => {
           {...register('link_repository')}
           error={errors.link_repository?.message}
         />
-        <Button type="submit">
-          <span>Editar</span>
+        <Button type="submit" color="#fff">
+          Editar
         </Button>
         <Button
           type="button"
+          color="#fff"
           onClick={async () => await deleteProject(project.id)}
         >
-          <span>Deletar</span>
+          Deletar
         </Button>
       </Form>
     </Container>

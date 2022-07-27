@@ -1,10 +1,24 @@
+import {
+  Card,
+  Circle,
+  Green,
+  Red,
+  Tools,
+  Yellow,
+  H4,
+  DivImg,
+  Const,
+  SpanToken,
+  Token
+} from './styles';
 
-import Axios from '../../assets/Axios.png'
-import Fetch from '../../assets/Fetch.png'
-import { Card, Circle, Green, Red, Tools, Yellow, H4, DivImg } from './styles';
+interface CardCodeProps {
+  text: string;
+  img?: string;
+  token?: string;
+}
 
-const CardCode =  () => {
-
+const CardCode = ({ text, img, token }: CardCodeProps) => {
   return (
     <Card>
       <Tools>
@@ -19,10 +33,15 @@ const CardCode =  () => {
         </Circle>
       </Tools>
       <DivImg>
-        <H4>Como usar com Axios</H4>
-        <img src={Axios} alt="Axios" />
-        <H4>Como usar com Fetch</H4>
-        <img src={Fetch} alt="Axios" />
+        <H4>{text}</H4>
+        {img ? (
+          <img src={img} alt={text} />
+        ) : (
+          <Const>
+            {' '}
+            const <SpanToken>Token</SpanToken> = <Token>{token}</Token>
+          </Const>
+        )}
       </DivImg>
     </Card>
   );

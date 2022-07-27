@@ -14,46 +14,19 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: any;
 }
 
-const InputDefault: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({
-  label,
-  icon,
-  type,
-  error,
-  ...rest
-}, ref) => {
+const InputDefault: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { label, icon, type, error, ...rest },
+  ref
+) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClick = () => setShowPassword(!showPassword);
 
-  if (icon) {
+  if (!icon) {
     return (
       <Container>
         <InputContainer>
-          <input
-            placeholder={label}
-            type={showPassword ? 'text' : 'password'}
-            ref={ref}
-            {...rest}
-          />
-          <label>
-            {label} {!!error && <span> - {error}</span>}
-          </label>
-          <Button type="button" onClick={handleClick}>
-            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-          </Button>
-        </InputContainer>
-      </Container>
-    );
-  } else {
-    return (
-      <Container>
-        <InputContainer>
-          <input
-            placeholder={label}
-            type={type}
-            ref={ref}
-            {...rest}
-          />
+          <input placeholder={label} type={type} ref={ref} {...rest} />
           <label>
             {label} {!!error && <span> - {error}</span>}
           </label>
@@ -61,6 +34,24 @@ const InputDefault: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({
       </Container>
     );
   }
+  return (
+    <Container>
+      <InputContainer>
+        <input
+          placeholder={label}
+          type={showPassword ? 'text' : 'password'}
+          ref={ref}
+          {...rest}
+        />
+        <label>
+          {label} {!!error && <span> - {error}</span>}
+        </label>
+        <Button type="button" onClick={handleClick}>
+          {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+        </Button>
+      </InputContainer>
+    </Container>
+  );
 };
 
 export const Input = forwardRef(InputDefault);

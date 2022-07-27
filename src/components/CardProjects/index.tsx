@@ -1,8 +1,5 @@
-import Link from 'next/link';
 import { useState } from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
-import { AiFillGithub } from 'react-icons/ai';
-import { HiStatusOnline } from 'react-icons/hi';
 import EditProject from '../EditProject';
 import {
   Container,
@@ -12,9 +9,9 @@ import {
   CardInfo,
   Desctiption,
   Title,
-  DivLink,
   Div
 } from './styles';
+import Empty from '../../assets/empty.webp';
 
 interface GetProjectProps {
   id: string;
@@ -38,36 +35,22 @@ const CardProject = (project: GetProjectProps) => {
     <>
       <Container>
         <CardImage
-          src={
-            project.img
-              ? project.img
-              : 'https://w7.pngwing.com/pngs/233/537/png-transparent-stop-sign-stop-miscellaneous-angle-rectangle-thumbnail.png'
-          }
-          alt="Teste"
+          src={project.img ? project.img : Empty}
+          alt={project.title}
         />
         <CardInfo>
           <Title>{project.title}</Title>
-          <Desctiption>{project.description}</Desctiption>
+          <Desctiption>
+            {project.description ? project.description : 'Sem descrição'}
+          </Desctiption>
         </CardInfo>
         <CardFooter>
           <Div>
-            <Title>{project.type}</Title>
+            <Title>{project.type ? project.type : 'Sem tipo'}</Title>
             <Button onClick={handleClick}>
               <FiMoreVertical size={20} />
             </Button>
           </Div>
-          <DivLink>
-            <Link href={project.link_repository}>
-              <a>
-                <AiFillGithub size={30} />
-              </a>
-            </Link>
-            <Link href={project.link_website}>
-              <a>
-                <HiStatusOnline size={30} />
-              </a>
-            </Link>
-          </DivLink>
         </CardFooter>
       </Container>
       {isOpen && (

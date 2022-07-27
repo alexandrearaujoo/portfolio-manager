@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { projectSchema } from '../../schemas';
 import { Input } from '../Input';
-import { Container, Form, Button, CloseButton } from './styles';
+import { Container, Form, CloseButton } from './styles';
 import { IoClose } from 'react-icons/io5';
 import { useProject } from '../../providers/Projects';
+import Button from '../Button';
 
 interface ProjectProps {
   title: string;
@@ -66,9 +67,7 @@ const RegisterProject = ({ openRegister, setOpenRegister, handleClick }) => {
           error={errors.link_repository?.message}
         />
         <Input label="Thumbnail" type="file" {...register('img')} />
-        <Button type="submit">
-          <span>Registrar</span>
-        </Button>
+        <Button type="submit" color='#fff'>Registrar</Button>
       </Form>
     </Container>
   );

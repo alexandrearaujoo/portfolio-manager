@@ -4,38 +4,74 @@ interface ButtonProps {
   width?: string;
   heigth?: string;
   background?: string;
+  color?: string
 }
 
 export const ButtonStyled = styled.button<ButtonProps>`
-  width: ${({ width }) => width};
-  height: ${({ heigth }) => heigth};
-  padding: 1.3em 3em;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.textBlack};
-  background-color: ${({ theme }) => theme.textWhite};
-  border: none;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
+  color: black;
+  text-decoration: none;
   cursor: pointer;
   outline: none;
+  border: none;
+  background: transparent;
 
-  :hover {
-    background-color: ${({ theme }) => theme.primary500};
-    box-shadow: 0px 15px 20px ${({ theme }) => theme.primary500};
-    color: #fff;
-    transform: translateY(-7px);
+  span {
+    width: 140px;
+    height: auto;
+    float: left;
+    transition: 0.5s linear;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    margin: 0 5px;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: ${({ color }) => color};
 
-    @media screen and (min-width: 1024px) {
-      background-color: ${({ theme }) => theme.primary};
-      box-shadow: 0px 15px 20px ${({ theme }) => theme.primary};
+    :before {
+      position: absolute;
+      content: '';
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      width: 100%;
+      border-bottom: 4px solid transparent;
+      border-left: 4px solid transparent;
+      box-sizing: border-box;
+      transform: translateX(100%);
     }
-  }
 
-  :active {
-    transform: translateY(-1px);
+    :after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      border-top: 4px solid transparent;
+      border-right: 4px solid transparent;
+      box-sizing: border-box;
+      transform: translateX(-100%);
+    }
+
+    :hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    :hover:before {
+      border-color: ${({ theme }) => theme.textWhite};
+      height: 100%;
+      transform: translateX(0);
+      transition: 0.3s transform linear, 0.3s height linear 0.3s;
+    }
+
+    :hover:after {
+      border-color: ${({ theme }) => theme.textWhite};
+      height: 100%;
+      transform: translateX(0);
+      transition: 0.3s transform linear, 0.3s height linear 0.5s;
+    }
   }
 `;

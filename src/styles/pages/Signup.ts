@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import Background from '../../assets/background.jpg';
+import Background from '../../assets/background.webp';
 
 const focus = keyframes`
  0% {

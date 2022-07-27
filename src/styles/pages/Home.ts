@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import Background from '../../assets/background.webp'
 
 const scaleInCenter = keyframes`
  0% {
@@ -15,27 +16,12 @@ const scaleInCenter = keyframes`
 
 export const Main = styled.main`
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: rgb(11, 148, 155);
-  background: linear-gradient(
-    0deg,
-    rgba(11, 148, 155, 1) 35%,
-    rgba(0, 112, 119, 1) 61%
-  );
-
-  @media screen and (min-width: 1024px) {
-    flex-direction: row;
-    background: rgb(11, 148, 155);
-    background: linear-gradient(
-      90deg,
-      rgba(11, 148, 155, 1) 35%,
-      rgba(0, 112, 119, 1) 61%
-    );
-  }
+  background: url(${Background}) center no-repeat;
+  background-size: cover;
 `;
 
 export const Div = styled.div`

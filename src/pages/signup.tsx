@@ -2,19 +2,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import Button from '../components/Button';
 import { Input } from '../components/Input';
 import { useUser } from '../providers/User';
 import { signUpSchema } from '../schemas';
-import { Container, Form, H2, Button } from '../styles/pages/Signup';
+import { Container, Form, H2 } from '../styles/pages/Signup';
 
 interface SignUpProps {
-  name: string
-  email: string
-  password: string
+  name: string;
+  email: string;
+  password: string;
 }
 
 const SignUp = () => {
-  const {signUp} = useUser()
+  const { signUp } = useUser();
 
   const {
     register,
@@ -25,8 +26,8 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpProps) => {
-    await signUp(data)
-  }
+    await signUp(data);
+  };
 
   return (
     <>
@@ -36,11 +37,26 @@ const SignUp = () => {
       <Container>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <H2>Cadastro</H2>
-          <Input label="Name" type="text" {...register('name')} error={errors.name?.message} />
-          <Input label="Email" type="text" {...register('email')} error={errors.email?.message} />
-          <Input label="Password" icon {...register('password')} error={errors.password?.message} />
-          <Button type="submit">
-            <span>Cadastrar</span>
+          <Input
+            label="Name"
+            type="text"
+            {...register('name')}
+            error={errors.name?.message}
+          />
+          <Input
+            label="Email"
+            type="text"
+            {...register('email')}
+            error={errors.email?.message}
+          />
+          <Input
+            label="Password"
+            icon
+            {...register('password')}
+            error={errors.password?.message}
+          />
+          <Button type="submit" color="#fff">
+            Cadastrar
           </Button>
           <p>
             Já possui conta ?{' '}

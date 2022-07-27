@@ -6,6 +6,8 @@ import MenuMobile from '../components/MenuMobile';
 import { useState } from 'react';
 import { useUser } from '../providers/User';
 import Loading from '../components/Loading';
+import Axios from '../assets/Axios.png'
+import Fetch from '../assets/Fetch.png'
 
 const Token = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -22,10 +24,9 @@ const Token = () => {
       <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header setIsOpen={setIsOpen} />
       <Main>
-        <h3>Seu token de acesso</h3>
-
-        <h4>{user.token}</h4>
-        <CardCode />
+        <CardCode text='Seu token de acesso' token={user.token}/>
+        <CardCode text='Como usar com Axios' img={Axios}/>
+        <CardCode text='Como usar com Fetch' img={Fetch}/>
       </Main>
     </>
   );

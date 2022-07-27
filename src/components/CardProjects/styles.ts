@@ -12,7 +12,7 @@ export const Container = styled.section`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   transition: 0.5s;
 
   :hover {
@@ -25,17 +25,16 @@ export const CardImage = styled.img`
   width: 100%;
   border-radius: 0.5rem;
   transition: 0.3s ease;
+  object-fit: cover;
 `;
 
 export const CardInfo = styled.div`
   padding-top: 10%;
   white-space: normal;
-  height: 90px;
 `;
 
 export const CardFooter = styled.div`
   width: 100%;
-  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,26 +43,6 @@ export const CardFooter = styled.div`
   border-top: 1px solid #ddd;
 `;
 
-export const DivLink = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-
-  > a svg {
-    transition: 0.5s;
-    color: black;
-  }
-
-  > a {
-    color: ${({ theme }) => theme.textBlack};
-
-    :hover {
-      svg {
-        color: #38caef;
-      }
-    }
-  }
-`;
 
 export const Div = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import Background from '../../assets/background.jpg';
+import Background from '../../assets/background.webp'
 
 const focus = keyframes`
  0% {
@@ -52,7 +52,7 @@ export const Form = styled.form`
     a {
       color: #38caef;
       transition: 0.5s;
-      
+
       :hover {
         color: ${({ theme }) => theme.primary};
         border-bottom: 1px solid ${({ theme }) => theme.primary};

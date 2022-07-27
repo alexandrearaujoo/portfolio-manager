@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Card = styled.div`
   width: 95%;
   max-width: 500px;
-  height: 450px;
-  margin: 0 auto;
+  height: 240px;
+  margin: 1rem;
   background-color: #011522;
   border-radius: 8px;
   z-index: 1;
@@ -42,11 +42,22 @@ export const Green = styled(Box)`
 export const H4 = styled.h4`
   color: ${({theme}) => theme.textWhite};
   text-align: center;
-
+  margin-bottom: 1.5rem;
 `
 export const DivImg = styled.div`
   display: flex;
-  height: 90%;
+  height: 200px;
   flex-direction: column;
-  justify-content: space-between;
+`
+export const Const = styled.p`
+  font-weight: 600;
+  color: #ff79c6;
+  word-wrap: break-word;
+  text-align: center;
+`
+export const SpanToken = styled.span`
+  color: #bd93f9;
+`
+export const Token = styled.span`
+  color: #f1fa8c;
 `
