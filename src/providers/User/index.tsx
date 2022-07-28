@@ -75,6 +75,7 @@ export const UserProvider = ({ children }: Props) => {
 
   const logout = () => {
     Cookies.remove('UserData')
+    setUser(null)
     router.push('/login');
   };
 
