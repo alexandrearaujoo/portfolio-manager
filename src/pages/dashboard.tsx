@@ -12,7 +12,7 @@ import { useUser } from '../providers/User';
 import { requireAuthentication } from '../utils/auth';
 
 export const getServerSideProps = requireAuthentication(async context => {
-  const email = 'teste@gmail.com';
+  const email = '';
 
   return {
     props: {
@@ -37,6 +37,7 @@ const Dashboard = () => {
     }
   }, [user]);
 
+
   if (!projects) return <Loading />;
 
   return (
@@ -57,15 +58,11 @@ const Dashboard = () => {
           handleClick={handleClick}
         />
       )}
-      {projects.length ? (
-        <Main>
-          {projects.map(project => (
-            <CardProject key={project.id} {...project} id={project.id} />
-          ))}
-        </Main>
-      ) : (
-        <h1>TESTE</h1>
-      )}
+      <Main>
+        {projects.map(project => (
+          <CardProject key={project.id} {...project} />
+        ))}
+      </Main>
     </>
   );
 };

@@ -11,7 +11,7 @@ import Fetch from '../assets/Fetch.png';
 import { requireAuthentication } from '../utils/auth';
 
 export const getServerSideProps = requireAuthentication(async context => {
-  const email = 'teste@gmail.com';
+  const email = '';
 
   return {
     props: {

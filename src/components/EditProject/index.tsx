@@ -5,6 +5,7 @@ import { IoClose } from 'react-icons/io5';
 import { useProject } from '../../providers/Projects';
 import { useUser } from '../../providers/User';
 import { updateProjectSchema } from '../../schemas';
+import { getOnlyPastValues } from '../../utils/onlyPastValues';
 import Button from '../Button';
 import { Input } from '../Input';
 import { CloseButton, Container, Form } from './styles';
@@ -30,8 +31,11 @@ const EditProject = ({ isOpen, handleClick, setIsOpen, project }) => {
     resolver: yupResolver(updateProjectSchema)
   });
 
+
+
   const onSubmit = async (data: EditProjectProps) => {
-    await editProject(data, project.id, user.token);
+    const onlyPastValues = getOnlyPastValues(data)
+    await editProject(onlyPastValues, project.id, user.token);
     setIsOpen(false);
   };
 
