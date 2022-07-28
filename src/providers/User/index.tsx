@@ -50,6 +50,8 @@ export const UserProvider = ({ children }: Props) => {
     }
   }, []);
 
+
+
   const signUp = async (data: CreateUserProps) => {
     await api
       .post('users/register/', data)
@@ -64,6 +66,7 @@ export const UserProvider = ({ children }: Props) => {
       .post('users/login/', data)
       .then(res => {
         Cookies.set('UserData', JSON.stringify(res.data))
+        setUser(res.data)
         toast.success('Successfully logged in');
         router.push('/dashboard');
       })

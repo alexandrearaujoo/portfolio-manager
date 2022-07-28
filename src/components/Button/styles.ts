@@ -5,6 +5,7 @@ interface ButtonProps {
   heigth?: string;
   background?: string;
   color?: string
+  fontSize?: number
 }
 
 export const ButtonStyled = styled.button<ButtonProps>`
@@ -16,6 +17,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   background: transparent;
 
   span {
+    font-size: ${({fontSize}) => fontSize}px;
     width: 140px;
     height: auto;
     float: left;

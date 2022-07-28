@@ -8,6 +8,7 @@ import { loginSchema } from '../schemas';
 import { useUser } from '../providers/User';
 import Button from '../components/Button';
 import router from 'next/router';
+import { useEffect } from 'react';
 
 interface LoginProps {
   email: string;
@@ -15,7 +16,7 @@ interface LoginProps {
 }
 
 const Login = () => {
-  const { login } = useUser();
+  const { login, user } = useUser();
 
   const {
     register,
@@ -24,6 +25,10 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(loginSchema)
   });
+
+  useEffect(() => {
+    if (user) router.push('/dashboard');
+  }, []);
 
   const onSubmit = async (data: LoginProps) => {
     await login(data);

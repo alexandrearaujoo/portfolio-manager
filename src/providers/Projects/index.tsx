@@ -41,7 +41,7 @@ interface EditProjectProps {
 }
 
 interface ProjectContextData {
-  projects: GetProjectProps;
+  projects: GetProjectProps[];
   createProject: (data: ProjectProps, token: string) => Promise<void>;
   getProjects: (token: string) => Promise<void>;
   editProject: (data: EditProjectProps, id: string, token: string) => Promise<void>;
@@ -53,7 +53,7 @@ const ProjectContext = createContext<ProjectContextData>(
 );
 
 export const ProjectProvider = ({ children }: Props) => {
-  const [projects, setProjects] = useState<GetProjectProps>();
+  const [projects, setProjects] = useState<GetProjectProps[]>();
 
   const createProject = async (data: ProjectProps, token: string) => {
     await api

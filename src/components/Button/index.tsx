@@ -1,15 +1,15 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
-import { IconType } from 'react-icons';
 import { ButtonStyled } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   color?: string;
+  fontSize?: number
 }
 
-const Button = ({ children, color, ...rest }: ButtonProps) => {
+const Button = ({ children, color, fontSize = 15, ...rest }: ButtonProps) => {
   return (
-    <ButtonStyled color={color} {...rest}>
+    <ButtonStyled color={color} fontSize={fontSize} {...rest}>
       <span>{children}</span>
     </ButtonStyled>
   );

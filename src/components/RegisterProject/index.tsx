@@ -64,7 +64,7 @@ const RegisterProject = ({ openRegister, setOpenRegister, handleClick }) => {
           error={errors.link_website?.message}
         />
         <Input
-          label="Link GitHub *"
+          label="Link Repository *"
           type="text"
           {...register('link_repository')}
           error={errors.link_repository?.message}

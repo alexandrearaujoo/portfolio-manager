@@ -48,6 +48,11 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
             rel="stylesheet"
           />
+          <link
+            rel="shortcut icon"
+            href="https://img.icons8.com/external-becris-lineal-color-becris/344/external-portfolio-business-management-becris-lineal-color-becris.png"
+            type="image/x-icon"
+          />
 
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

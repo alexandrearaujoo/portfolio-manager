@@ -37,7 +37,6 @@ const Dashboard = () => {
     }
   }, [user]);
 
-
   if (!projects) return <Loading />;
 
   return (

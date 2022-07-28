@@ -16,25 +16,33 @@ const scaleInCenter = keyframes`
 
 export const Main = styled.main`
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
   height: 100vh;
   background: url(${Background}) center no-repeat;
   background-size: cover;
+
+  @media screen and (min-width: 1024px){
+    flex-direction: row;
+  }
 `;
 
 export const Div = styled.div`
   width: 95%;
   max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   -webkit-animation: ${scaleInCenter} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both;
   animation: ${scaleInCenter} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   > img {
-    width: 30%;
-    height: 30%;
+    width: 70%;
+    height: 70%;
   }
 
   > p {
@@ -48,8 +56,8 @@ export const Div = styled.div`
       font-size: 2rem;
     }
     > img {
-      width: 50%;
-      height: 50%;
+      width: 70%;
+      height: 70%;
     }
   }
 `;
