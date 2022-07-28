@@ -27,7 +27,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    if (user) router.push('/dashboard');
+    user && router.push('/dashboard')
   }, []);
 
   const onSubmit = async (data: LoginProps) => {
