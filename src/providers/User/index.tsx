@@ -3,12 +3,12 @@ import {
   useState,
   useContext,
   ReactNode,
-  useEffect,
+  useEffect
 } from 'react';
 import api from '../../services/api';
 import toast from 'react-hot-toast';
 import router from 'next/router';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 interface Props {
   children: ReactNode;
@@ -43,14 +43,12 @@ export const UserProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    const data = Cookies.get('UserData')
+    const data = Cookies.get('UserData');
 
     if (data) {
       setUser(JSON.parse(data));
     }
   }, []);
-
-
 
   const signUp = async (data: CreateUserProps) => {
     await api
@@ -65,8 +63,8 @@ export const UserProvider = ({ children }: Props) => {
     await api
       .post('users/login/', data)
       .then(res => {
-        Cookies.set('UserData', JSON.stringify(res.data))
-        setUser(res.data)
+        Cookies.set('UserData', JSON.stringify(res.data));
+        setUser(res.data);
         toast.success('Successfully logged in');
         router.push('/dashboard');
       })
@@ -74,8 +72,8 @@ export const UserProvider = ({ children }: Props) => {
   };
 
   const logout = () => {
-    Cookies.remove('UserData')
-    setUser(null)
+    Cookies.remove('UserData');
+    setUser({ token: '', user_id: '' });
     router.push('/login');
   };
 

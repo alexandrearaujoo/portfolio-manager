@@ -55,11 +55,15 @@ export const DivImg = styled.div`
   height: 200px;
   flex-direction: column;
 `
-export const Const = styled.p`
+export const Const = styled.div`
   font-weight: 600;
   color: #ff79c6;
   word-wrap: break-word;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 `
 export const SpanToken = styled.span`
   color: #bd93f9;

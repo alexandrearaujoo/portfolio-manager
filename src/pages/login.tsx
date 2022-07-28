@@ -26,10 +26,8 @@ const Login = () => {
     resolver: yupResolver(loginSchema)
   });
 
-  console.log(user)
-
   useEffect(() => {
-    user !== null && router.push('/dashboard')
+    user && router.push('/dashboard')
   }, []);
 
   const onSubmit = async (data: LoginProps) => {

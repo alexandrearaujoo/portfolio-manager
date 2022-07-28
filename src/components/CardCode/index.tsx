@@ -39,7 +39,13 @@ const CardCode = ({ text, img, token }: CardCodeProps) => {
         ) : (
           <Const>
             {' '}
-            const <SpanToken>Token</SpanToken> = <Token>{token}</Token>
+            <div>
+              const <SpanToken>Token</SpanToken> = <Token>{token}</Token>
+            </div>
+            <div>
+              const <SpanToken>baseURL</SpanToken> ={' '}
+              <Token>https://manager-portfolio-api.herokuapp.com/api/</Token>
+            </div>
           </Const>
         )}
       </DivImg>
