@@ -9,7 +9,7 @@ export const Container = styled.section`
   position: relative;
   overflow: visible;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 1px 2px 6px -1px rgba(134, 134, 134, 0.68);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

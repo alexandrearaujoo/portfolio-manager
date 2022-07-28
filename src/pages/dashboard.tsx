@@ -4,12 +4,22 @@ import CardProject from '../components/CardProjects';
 import Header from '../components/Header';
 import MenuMobile from '../components/MenuMobile';
 import RegisterProject from '../components/RegisterProject';
-import { Main, Button, H1 } from '../styles/pages/Dashboard';
+import { Main, Button } from '../styles/pages/Dashboard';
 import { BiBookAdd } from 'react-icons/bi';
 import { useProject } from '../providers/Projects';
 import Loading from '../components/Loading';
 import { useUser } from '../providers/User';
+import { requireAuthentication } from '../utils/auth';
 
+export const getServerSideProps = requireAuthentication(async context => {
+  const email = 'teste@gmail.com';
+
+  return {
+    props: {
+      email
+    }
+  };
+});
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -22,11 +32,10 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if(user) {
-      getProjects(user.token)
+    if (user) {
+      getProjects(user.token);
     }
-  },[user])
-
+  }, [user]);
 
   if (!projects) return <Loading />;
 
@@ -48,7 +57,7 @@ const Dashboard = () => {
           handleClick={handleClick}
         />
       )}
-      {projects.length > 0 ? (
+      {projects.length ? (
         <Main>
           {projects.map(project => (
             <CardProject key={project.id} {...project} id={project.id} />

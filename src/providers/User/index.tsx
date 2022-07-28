@@ -4,11 +4,11 @@ import {
   useContext,
   ReactNode,
   useEffect,
-  SetStateAction
 } from 'react';
 import api from '../../services/api';
 import toast from 'react-hot-toast';
 import router from 'next/router';
+import Cookies from 'js-cookie'
 
 interface Props {
   children: ReactNode;
@@ -43,7 +43,7 @@ export const UserProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    const data = localStorage.getItem('UserData');
+    const data = Cookies.get('UserData')
 
     if (data) {
       setUser(JSON.parse(data));
@@ -63,7 +63,7 @@ export const UserProvider = ({ children }: Props) => {
     await api
       .post('users/login/', data)
       .then(res => {
-        localStorage.setItem('UserData', JSON.stringify(res.data));
+        Cookies.set('UserData', JSON.stringify(res.data))
         toast.success('Successfully logged in');
         router.push('/dashboard');
       })
@@ -71,7 +71,7 @@ export const UserProvider = ({ children }: Props) => {
   };
 
   const logout = () => {
-    localStorage.clear();
+    Cookies.remove('UserData')
     router.push('/login');
   };
 

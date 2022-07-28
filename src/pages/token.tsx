@@ -6,15 +6,26 @@ import MenuMobile from '../components/MenuMobile';
 import { useState } from 'react';
 import { useUser } from '../providers/User';
 import Loading from '../components/Loading';
-import Axios from '../assets/Axios.png'
-import Fetch from '../assets/Fetch.png'
+import Axios from '../assets/Axios.png';
+import Fetch from '../assets/Fetch.png';
+import { requireAuthentication } from '../utils/auth';
+
+export const getServerSideProps = requireAuthentication(async context => {
+  const email = 'teste@gmail.com';
+
+  return {
+    props: {
+      email
+    }
+  };
+});
 
 const Token = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const {user} = useUser()
+  const { user } = useUser();
 
-  if (!user) return <Loading />
+  if (!user) return <Loading />;
 
   return (
     <>
@@ -24,9 +35,9 @@ const Token = () => {
       <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header setIsOpen={setIsOpen} />
       <Main>
-        <CardCode text='Seu token de acesso' token={user.token}/>
-        <CardCode text='Como usar com Axios' img={Axios}/>
-        <CardCode text='Como usar com Fetch' img={Fetch}/>
+        <CardCode text="Seu token de acesso" token={user.token} />
+        <CardCode text="Como usar com Axios" img={Axios} />
+        <CardCode text="Como usar com Fetch" img={Fetch} />
       </Main>
     </>
   );

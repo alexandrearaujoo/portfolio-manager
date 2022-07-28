@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../schemas';
 import { useUser } from '../providers/User';
 import Button from '../components/Button';
+import router from 'next/router';
 
 interface LoginProps {
   email: string;
@@ -48,7 +49,9 @@ const Login = () => {
             {...register('password')}
             error={errors.password?.message}
           />
-          <Button type="submit" color='#fff'>Logar</Button>
+          <Button type="submit" color="#fff">
+            Logar
+          </Button>
           <p>
             Não possui conta ainda ?{' '}
             <Link href="/signup">
