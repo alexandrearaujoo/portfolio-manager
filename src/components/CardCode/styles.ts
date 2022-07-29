@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
-export const Card = styled.div`
+interface CardProps {
+  widht?: number
+  height?: number
+}
+
+export const Card = styled.div<CardProps>`
   width: 95%;
-  max-width: 500px;
-  height: 240px;
+  max-width: ${props => props.widht}px;
+  height: ${props => props.height}px;
   margin: 1rem;
   background: linear-gradient(225deg, rgb(49, 56, 96) 0%, rgb(17, 23, 43) 100%);
   border-radius: 8px;

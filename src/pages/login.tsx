@@ -26,9 +26,7 @@ const Login = () => {
     resolver: yupResolver(loginSchema)
   });
 
-  useEffect(() => {
-    user && router.push('/dashboard')
-  }, []);
+
 
   const onSubmit = async (data: LoginProps) => {
     await login(data);

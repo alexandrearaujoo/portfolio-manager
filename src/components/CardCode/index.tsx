@@ -16,11 +16,13 @@ interface CardCodeProps {
   text: string;
   img?: string;
   token?: string;
+  width?: number
+  height?: number
 }
 
-const CardCode = ({ text, img, token }: CardCodeProps) => {
+const CardCode = ({ text, img, token, width = 500, height = 240 }: CardCodeProps) => {
   return (
-    <Card>
+    <Card widht={width} height={height}>
       <Tools>
         <Circle>
           <Yellow></Yellow>
