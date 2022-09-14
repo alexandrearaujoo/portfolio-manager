@@ -8,7 +8,6 @@ import { IoClose } from 'react-icons/io5';
 import { useProject } from '../../providers/Projects';
 import Button from '../Button';
 import { useUser } from '../../providers/User';
-import Loading from '../Loading';
 
 interface ProjectProps {
   title: string;

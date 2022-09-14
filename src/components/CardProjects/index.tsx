@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
 import EditProject from '../EditProject';
 import {
@@ -12,6 +12,7 @@ import {
   Div
 } from './styles';
 import Empty from '../../assets/empty.webp';
+import { scrollToTop } from '../../utils/scrollToTop';
 
 interface GetProjectProps {
   id: string;
@@ -29,7 +30,12 @@ const CardProject = (project: GetProjectProps) => {
 
   const handleClick = () => {
     setIsOpen(!isOpen);
+    scrollToTop();
   };
+
+  useEffect(() => {
+    document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+  }, [isOpen]);
 
   return (
     <>

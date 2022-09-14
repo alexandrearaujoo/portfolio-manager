@@ -31,11 +31,16 @@ const Dashboard = () => {
     setOpenRegister(!openRegister);
   };
 
-  useEffect(() => {
+  const fecthUser = async () => {
     if (user) {
-      getProjects(user.token);
+      await getProjects(user.token);
     }
-  }, [user]);
+  };
+
+  useEffect(() => {
+    fecthUser();
+    document.body.style.overflowY = openRegister ? 'hidden' : 'auto';
+  }, [user, openRegister]);
 
   if (!projects) return <Loading />;
 
